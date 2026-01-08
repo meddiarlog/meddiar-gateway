@@ -95,18 +95,25 @@ const FaleConosco = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-secondary to-secondary/95 py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">
-              Contato
-            </span>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+      {/* Hero com imagem de fundo */}
+      <section className="relative h-[300px] md:h-[350px] flex items-center">
+        {/* Background Image - mãos no laptop */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=2000&q=80')`
+          }}
+        />
+        {/* Overlay escuro */}
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/70 to-secondary/50" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
               Fale Conosco
             </h1>
-            <p className="text-xl text-white/80">
-              Entre em contato conosco. Estamos prontos para atender você.
+            <p className="text-lg md:text-xl text-white/80">
+              Estamos prontos para atender você
             </p>
           </div>
         </div>
