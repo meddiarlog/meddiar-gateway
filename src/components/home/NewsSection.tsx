@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight, Play } from "lucide-react";
+import { Calendar, Play } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -45,94 +42,109 @@ const NewsSection = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
+        {/* Título centralizado */}
         <div className="text-center mb-12">
-          <h2 className="section-title mb-4">Notícias do Setor</h2>
-          <p className="section-subtitle mx-auto">
-            Fique por dentro das novidades do mundo do transporte e logística.
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+            Notícias
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Fique por dentro das novidades do setor de transporte e logística
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* News Cards */}
-          <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
-            {loading ? (
-              <>
-                {[1, 2, 3, 4].map((i) => (
-                  <Card key={i} className="animate-pulse">
-                    <div className="h-48 bg-muted rounded-t-lg" />
-                    <CardContent className="p-5">
-                      <div className="h-4 bg-muted rounded w-1/3 mb-3" />
-                      <div className="h-6 bg-muted rounded mb-2" />
-                      <div className="h-4 bg-muted rounded w-full" />
-                    </CardContent>
-                  </Card>
-                ))}
-              </>
-            ) : news.length > 0 ? (
-              news.map((item) => (
-                <Card key={item.id} className="card-hover overflow-hidden">
-                  {item.image_url ? (
-                    <img
-                      src={item.image_url}
-                      alt={item.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                      <span className="text-4xl">📰</span>
-                    </div>
-                  )}
-                  <CardContent className="p-5">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                      <Calendar size={14} />
-                      <span>
-                        {formatDate(item.published_at || item.created_at)}
-                      </span>
-                    </div>
-                    <CardTitle className="text-lg mb-2 line-clamp-2">
-                      {item.title}
-                    </CardTitle>
-                    {item.summary && (
-                      <p className="text-muted-foreground text-sm line-clamp-2">
-                        {item.summary}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              <div className="md:col-span-2 text-center py-12 text-muted-foreground">
-                <p>Nenhuma notícia publicada ainda.</p>
-                <p className="text-sm mt-2">
-                  Volte em breve para novidades do setor.
-                </p>
+        {/* Grid: 3 notícias + 1 vídeo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {loading ? (
+            <>
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="animate-pulse">
+                  <div className="aspect-[4/3] bg-muted rounded-lg mb-4" />
+                  <div className="h-4 bg-muted rounded w-1/3 mb-2" />
+                  <div className="h-6 bg-muted rounded mb-1" />
+                  <div className="h-6 bg-muted rounded w-3/4" />
+                </div>
+              ))}
+              <div className="animate-pulse">
+                <div className="aspect-video bg-muted rounded-lg" />
+                <div className="h-4 bg-muted rounded w-2/3 mt-4" />
               </div>
-            )}
-          </div>
+            </>
+          ) : news.length > 0 ? (
+            <>
+              {news.map((item) => (
+                <div key={item.id} className="group cursor-pointer">
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden mb-4">
+                    {item.image_url ? (
+                      <img
+                        src={item.image_url}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <span className="text-4xl">📰</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <Calendar size={14} />
+                    <span>
+                      {formatDate(item.published_at || item.created_at)}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg text-foreground line-clamp-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                </div>
+              ))}
 
-          {/* Video Section */}
-          <div className="lg:col-span-1">
-            <Card className="h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">Vídeo em Destaque</CardTitle>
-              </CardHeader>
-              <CardContent>
+              {/* Vídeo em Destaque */}
+              <div className="lg:col-span-1">
                 <div className="aspect-video bg-gradient-to-br from-secondary to-secondary/80 rounded-lg flex items-center justify-center relative overflow-hidden group cursor-pointer">
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
                   <div className="relative z-10 p-4 bg-primary rounded-full group-hover:scale-110 transition-transform">
                     <Play size={32} className="text-white ml-1" fill="white" />
                   </div>
-                  <p className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium z-10">
-                    Clique para assistir
-                  </p>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
                   Conheça mais sobre a Meddiar Logística e nossos serviços de
                   transporte de cargas.
                 </p>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Placeholder quando não há notícias */}
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="group">
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                    <span className="text-4xl opacity-50">📰</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <Calendar size={14} />
+                    <span>Em breve</span>
+                  </div>
+                  <h3 className="font-bold text-lg text-muted-foreground">
+                    Aguarde novidades do setor
+                  </h3>
+                </div>
+              ))}
+
+              {/* Vídeo em Destaque */}
+              <div className="lg:col-span-1">
+                <div className="aspect-video bg-gradient-to-br from-secondary to-secondary/80 rounded-lg flex items-center justify-center relative overflow-hidden group cursor-pointer">
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+                  <div className="relative z-10 p-4 bg-primary rounded-full group-hover:scale-110 transition-transform">
+                    <Play size={32} className="text-white ml-1" fill="white" />
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Conheça mais sobre a Meddiar Logística e nossos serviços de
+                  transporte de cargas.
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

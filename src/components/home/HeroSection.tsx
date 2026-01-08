@@ -41,8 +41,7 @@ const HeroSection = () => {
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-secondary text-lg px-8"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-secondary text-lg px-8"
               asChild
             >
               <Link to="/quem-somos/apresentacao">Conheça a Meddiar</Link>
