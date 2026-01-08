@@ -14,13 +14,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Send, CheckCircle } from "lucide-react";
@@ -32,22 +25,12 @@ const formSchema = z.object({
   company: z.string().optional(),
   origin_city: z.string().min(2, "Cidade de origem é obrigatória").max(100),
   destination_city: z.string().min(2, "Cidade de destino é obrigatória").max(100),
-  cargo_type: z.string().min(1, "Selecione o tipo de carga"),
+  cargo_type: z.string().min(1, "Digite o tipo de carga"),
   cargo_weight: z.string().optional(),
   message: z.string().max(1000).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const cargoTypes = [
-  "Carga Geral",
-  "Produtos de Varejo",
-  "Insumos Industriais",
-  "Produtos Agrícolas",
-  "Farmacêuticos",
-  "Materiais de Construção",
-  "Outros",
-];
 
 const Cotacao = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -256,23 +239,9 @@ const Cotacao = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Tipo de carga *</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Selecione o tipo" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {cargoTypes.map((type) => (
-                              <SelectItem key={type} value={type}>
-                                {type}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <FormControl>
+                          <Input placeholder="Digite o tipo de carga" {...field} />
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}

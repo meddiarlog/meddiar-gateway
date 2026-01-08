@@ -25,7 +25,7 @@ const cargoTypes = [
   {
     icon: Package,
     title: "Carga Geral",
-    description: "Diversos tipos de produtos fracionados ou consolidados",
+    description: "Carga geral dedicada",
   },
   {
     icon: Building2,
