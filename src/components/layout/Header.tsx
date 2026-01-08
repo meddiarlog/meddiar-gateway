@@ -51,19 +51,19 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
+            {/* Link Início sem dropdown */}
+            <Link
+              to="/"
+              className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Início
+            </Link>
+
+            {/* NavigationMenu individual para Quem Somos */}
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link
-                    to="/"
-                    className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                      isActive("/") ? "text-primary" : "text-foreground"
-                    }`}
-                  >
-                    Início
-                  </Link>
-                </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm font-medium">
                     Quem Somos
@@ -85,7 +85,12 @@ const Header = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
+            {/* NavigationMenu individual para Serviços */}
+            <NavigationMenu>
+              <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm font-medium">
                     Serviços
@@ -107,7 +112,12 @@ const Header = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
+            {/* NavigationMenu individual para Contato */}
+            <NavigationMenu>
+              <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm font-medium">
                     Contato
