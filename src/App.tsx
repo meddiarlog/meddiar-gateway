@@ -15,6 +15,7 @@ import PerfilDeCarga from "./pages/quem-somos/PerfilDeCarga";
 import AreaDoCliente from "./pages/servicos/AreaDoCliente";
 import Cotacao from "./pages/servicos/Cotacao";
 import Boletos from "./pages/servicos/Boletos";
+import Munk from "./pages/servicos/Munk";
 
 // Contato
 import FaleConosco from "./pages/contato/FaleConosco";
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/servicos/area-do-cliente" element={<AreaDoCliente />} />
           <Route path="/servicos/cotacao" element={<Cotacao />} />
           <Route path="/servicos/boletos" element={<Boletos />} />
+          <Route path="/servicos/munk" element={<Munk />} />
           
           {/* Contato */}
           <Route path="/contato/fale-conosco" element={<FaleConosco />} />
