@@ -5,11 +5,11 @@ import { ArrowRight } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="relative min-h-[calc(100vh-5rem)] flex items-center">
-      {/* Background Image */}
+      {/* Background Image - Carreta de transporte pesado */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
         }}
       />
       
@@ -22,6 +22,11 @@ const HeroSection = () => {
             Soluções Logísticas com
             <span className="text-primary block">Excelência</span>
           </h1>
+
+          {/* Frase em destaque */}
+          <p className="text-xl md:text-2xl font-semibold text-white/90 italic">
+            "Expertise em logística e transporte de placas drywall."
+          </p>
           
           <p className="text-lg md:text-xl text-white/70 max-w-xl leading-relaxed">
             Conectamos seu negócio aos melhores caminhos. Transporte seguro, 
@@ -44,7 +49,13 @@ const HeroSection = () => {
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-secondary text-lg px-8"
               asChild
             >
-              <Link to="/quem-somos/apresentacao">Conheça a Meddiar</Link>
+              <a 
+                href="https://wa.me/557521370024" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Suporte 24 Horas
+              </a>
             </Button>
           </div>
         </div>

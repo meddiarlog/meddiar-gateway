@@ -28,6 +28,7 @@ const Header = () => {
     { title: "Área do Cliente", href: "/servicos/area-do-cliente" },
     { title: "Cotação de Frete", href: "/servicos/cotacao" },
     { title: "Segunda Via de Boletos", href: "/servicos/boletos" },
+    { title: "Serviço de Munk", href: "/servicos/munk" },
   ];
 
   const contatoItems = [
@@ -45,7 +46,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Meddiar Logística"
-              className="h-14 w-auto object-contain"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </Link>
 
