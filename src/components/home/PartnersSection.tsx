@@ -48,11 +48,11 @@ const PartnersSection = () => {
                   key={index}
                   className="basis-1/2 md:basis-1/3 lg:basis-1/5"
                 >
-                  <div className="bg-card rounded-lg p-6 flex items-center justify-center h-28 card-hover border border-border mx-2">
+                  <div className="bg-card rounded-lg p-8 flex items-center justify-center h-36 card-hover border border-border mx-2">
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-h-16 w-auto object-contain"
+                      className="max-h-24 w-auto object-contain"
                     />
                   </div>
                 </CarouselItem>
