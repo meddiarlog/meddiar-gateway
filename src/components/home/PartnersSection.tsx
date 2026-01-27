@@ -1,12 +1,23 @@
-import { Building2 } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+
+import logoAndreGuimaraes from "@/assets/partners/andre-guimaraes.png";
+import logoDrywallCenter from "@/assets/partners/drywall-center.avif";
+import logoGdsul from "@/assets/partners/gdsul.png";
+import logoRcervellini from "@/assets/partners/rcervellini.jpeg";
+import logoConstrucenter from "@/assets/partners/construcenter.jpeg";
 
 const partners = [
-  { name: "Empresa 1", logo: null },
-  { name: "Empresa 2", logo: null },
-  { name: "Empresa 3", logo: null },
-  { name: "Empresa 4", logo: null },
-  { name: "Empresa 5", logo: null },
-  { name: "Empresa 6", logo: null },
+  { name: "Grupo André Guimarães", logo: logoAndreGuimaraes },
+  { name: "Drywall Center", logo: logoDrywallCenter },
+  { name: "GDSUL", logo: logoGdsul },
+  { name: "RCervellini", logo: logoRcervellini },
+  { name: "Construcenter", logo: logoConstrucenter },
 ];
 
 const PartnersSection = () => {
@@ -23,26 +34,33 @@ const PartnersSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-lg p-6 flex items-center justify-center h-28 card-hover border border-border"
-            >
-              {partner.logo ? (
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-h-16 w-auto object-contain"
-                />
-              ) : (
-                <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                  <Building2 size={32} />
-                  <span className="text-xs font-medium">Logo Parceiro</span>
-                </div>
-              )}
-            </div>
-          ))}
+        <div className="relative px-12">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {partners.map((partner, index) => (
+                <CarouselItem
+                  key={index}
+                  className="basis-1/2 md:basis-1/3 lg:basis-1/5"
+                >
+                  <div className="bg-card rounded-lg p-6 flex items-center justify-center h-28 card-hover border border-border mx-2">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-h-16 w-auto object-contain"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0" />
+            <CarouselNext className="right-0" />
+          </Carousel>
         </div>
       </div>
     </section>
