@@ -52,7 +52,7 @@ const PartnersSection = () => {
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-h-24 w-auto object-contain"
+                      className="max-h-24 w-auto object-contain transition-transform duration-300 hover:scale-110"
                     />
                   </div>
                 </CarouselItem>
