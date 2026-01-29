@@ -9,8 +9,8 @@ import {
 import logoAndreGuimaraes from "@/assets/partners/andre-guimaraes.png";
 import logoDrywallCenter from "@/assets/partners/drywall-center.avif";
 import logoGdsul from "@/assets/partners/gdsul.png";
-import logoRcervellini from "@/assets/partners/rcervellini.jpeg";
-import logoConstrucenter from "@/assets/partners/construcenter.jpeg";
+import logoRcervellini from "@/assets/partners/rcervellini.png";
+import logoConstrucenter from "@/assets/partners/construcenter.png";
 
 const partners = [
   { name: "Grupo André Guimarães", logo: logoAndreGuimaraes },
