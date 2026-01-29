@@ -1,43 +1,68 @@
 
 
-## Plano: Aumentar Tamanho dos Logos de Clientes
+## Plano: Substituir as 3 Ultimas Logos de Clientes
 
-### Alterações Necessárias
+### Objetivo
+Substituir as logos editadas de GDSUL, RCervellini e Construcenter pelas novas versoes enviadas.
+
+---
+
+### 1. Logos Atuais vs Novas
+
+| Posicao | Logo Atual | Nova Logo |
+|---------|------------|-----------|
+| 3 | gdsul.png | GDSUL_EDITADA.png |
+| 4 | rcervellini.jpeg | RCERVELLINI_EDITADA.png |
+| 5 | construcenter.jpeg | CONSTRUCENTER_EDITADA.png |
+
+---
+
+### 2. Copiar Novas Logos
+
+As 3 novas imagens serao copiadas para `src/assets/partners/`:
+
+| Arquivo Enviado | Destino |
+|-----------------|---------|
+| GDSUL_EDITADA.png | src/assets/partners/gdsul.png |
+| RCERVELLINI_EDITADA.png | src/assets/partners/rcervellini.png |
+| CONSTRUCENTER_EDITADA.png | src/assets/partners/construcenter.png |
+
+---
+
+### 3. Atualizar PartnersSection.tsx
 
 **Arquivo:** `src/components/home/PartnersSection.tsx`
 
-Vou aumentar tanto o container dos logos quanto a altura máxima das imagens:
+Atualizar os imports para usar os novos arquivos (mudanca de extensao):
 
-| Elemento | Valor Atual | Novo Valor |
-|----------|-------------|------------|
-| Container (card) | `h-28` (112px) | `h-36` (144px) |
-| Imagem logo | `max-h-16` (64px) | `max-h-24` (96px) |
-| Padding | `p-6` | `p-8` |
-
-### Código a ser alterado
-
-**Linha 51** - Aumentar altura do card:
 ```tsx
 // De:
-<div className="bg-card rounded-lg p-6 flex items-center justify-center h-28 card-hover border border-border mx-2">
+import logoGdsul from "@/assets/partners/gdsul.png";
+import logoRcervellini from "@/assets/partners/rcervellini.jpeg";
+import logoConstrucenter from "@/assets/partners/construcenter.jpeg";
 
 // Para:
-<div className="bg-card rounded-lg p-8 flex items-center justify-center h-36 card-hover border border-border mx-2">
+import logoGdsul from "@/assets/partners/gdsul.png";
+import logoRcervellini from "@/assets/partners/rcervellini.png";
+import logoConstrucenter from "@/assets/partners/construcenter.png";
 ```
 
-**Linha 55** - Aumentar tamanho máximo do logo:
-```tsx
-// De:
-className="max-h-16 w-auto object-contain"
+---
 
-// Para:
-className="max-h-24 w-auto object-contain"
-```
+### 4. Arquivos a Serem Modificados
 
-### Resultado Esperado
+| Acao | Arquivo |
+|------|---------|
+| Copiar/Substituir | src/assets/partners/gdsul.png |
+| Copiar/Substituir | src/assets/partners/rcervellini.png |
+| Copiar/Substituir | src/assets/partners/construcenter.png |
+| Modificar | src/components/home/PartnersSection.tsx |
 
-- Cards de logos 28% mais altos (de 112px para 144px)
-- Logos 50% maiores (de 64px para 96px de altura máxima)
-- Mais espaço interno nos cards para melhor respiro visual
-- Mantém responsividade e estilo visual atual
+---
+
+### 5. Resultado Esperado
+
+- As 3 logos antigas serao substituidas pelas versoes editadas
+- As novas logos aparecerao no carrossel de clientes
+- Mantém todas as funcionalidades existentes (hover, navegacao, responsividade)
 
